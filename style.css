@@ -5,19 +5,16 @@
 
 body {
   margin: 0;
-  background: #f6f2ee;
-  color: #2e2e2e;
+  font-family: 'Caveat', cursive;
+  background: #fff0f3;
+  color: #3a2d2d;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.container {
-  max-width: 750px;
-  padding: 40px 20px;
-  margin: auto;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .subtitle {
@@ -106,4 +103,23 @@ footer {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
+}
+
+.heart {
+  position: fixed;
+  font-size: 80px;
+  color: #e63946;
+  opacity: 0.15;
+  z-index: 0;
+  user-select: none;
+}
+
+.heart.left {
+  left: -20px;
+  top: 40%;
+}
+
+.heart.right {
+  right: -20px;
+  top: 60%;
 }
