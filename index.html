@@ -1,102 +1,142 @@
-<!-- POLAROIDS -->
-<section id="memories" class="section reveal">
-
-  <div class="section-heading">
-    <p class="small-label">
-      little pieces of us
-    </p>
-
-    <h2>
-      Moments I keep replaying
-    </h2>
-  </div>
-
-  <div class="polaroid-grid">
-
-    <!-- PHOTO 1 -->
-    <div class="polaroid rotate-left">
-      <img src="photos/auto.jpeg" alt="Memory 1">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 2 -->
-    <div class="polaroid rotate-right">
-      <img src="photos/bmtcone.jpeg" alt="Memory 2">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 3 -->
-    <div class="polaroid rotate-left-small">
-      <img src="photos/f16.jpeg" alt="Memory 3">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 4 -->
-    <div class="polaroid rotate-right">
-      <img src="photos/f16group.jpeg" alt="Memory 4">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 5 -->
-    <div class="polaroid rotate-left">
-      <img src="photos/f16p2.jpeg" alt="Memory 5">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 6 -->
-    <div class="polaroid rotate-left-small">
-      <img src="photos/herwallpp.jpeg" alt="Memory 6">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 7 -->
-    <div class="polaroid rotate-right">
-      <img src="photos/jook.jpeg" alt="Memory 7">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 8 -->
-    <div class="polaroid rotate-left">
-      <img src="photos/lake.jpeg" alt="Memory 8">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 9 -->
-    <div class="polaroid rotate-left-small">
-      <img src="photos/numetal.jpeg" alt="Memory 9">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 10 -->
-    <div class="polaroid rotate-right">
-      <img src="photos/pbh.jpeg" alt="Memory 10">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 11 -->
-    <div class="polaroid rotate-left">
-      <img src="photos/pbhkies.jpeg" alt="Memory 11">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 12 -->
-    <div class="polaroid rotate-left-small">
-      <img src="photos/vinatgeweird.jpeg" alt="Memory 12">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 13 -->
-    <div class="polaroid rotate-right">
-      <img src="photos/vintagecute.jpeg" alt="Memory 13">
-      <p>caption here ♡</p>
-    </div>
-
-    <!-- PHOTO 14 -->
-    <div class="polaroid rotate-left">
-      <img src="photos/wallppcarousel.jpeg" alt="Memory 14">
-      <p>caption here ♡</p>
-    </div>
-
-  </div>
-
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b16">
+  <meta name="description" content="A little collection of us. Photos, songs, and a letter for you.">
+  <title>For You ♡</title>
+  <link rel="stylesheet" href="style.css?v=2">
+  <script src="script.js?v=2" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#memories">Skip to our photos</a>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="site-header"><a href="#home" class="wordmark">for you.</a><nav aria-label="Main navigation"><a href="#soundtrack">Our soundtrack</a><a href="#memories">Memories</a><a href="#letter">A letter</a></nav></header>
+  <main>
+    <section id="home" class="section hero">
+      <p class="eyebrow">a little collection of us</p>
+      <h1>Hey <span>you.</span></h1>
+      <p class="hero-text">Some moments deserve more than a camera roll.</p>
+      <div class="hero-divider" aria-hidden="true"><span></span><p>♡</p><span></span></div>
+      <p class="handwritten">So I made them a home.</p>
+      <a class="scroll-button" href="#soundtrack">Come sit with me</a>
+    </section>
+    <section id="soundtrack" class="section">
+      <div class="section-heading"><p class="small-label">press play, stay a while</p><h2>A soundtrack for us.</h2></div>
+      <div class="music-card">
+        <div class="album-cover"><img src="photos/herwallpp.jpeg" alt="A photo from our collection" width="270" height="270"></div>
+        <div class="song-info">
+          <p class="playing">PICK OUR SOUNDTRACK</p>
+          <h3 id="song-title">Always</h3><p class="artist" id="song-artist">Daniel Caesar</p>
+          <div class="track-list" role="group" aria-label="Choose a song">
+            <button type="button" class="track-button" data-src="music/Daniel Caesar - Always (Official Audio).mp3" data-title="Always" data-artist="Daniel Caesar" aria-pressed="true">01 · Always</button>
+            <button type="button" class="track-button" data-src="music/Ravyn Lenae - Love Me Not.mp3" data-title="Love Me Not" data-artist="Ravyn Lenae" aria-pressed="false">02 · Love Me Not</button>
+          </div>
+          <audio id="soundtrack-audio" controls preload="metadata" src="music/Daniel Caesar - Always (Official Audio).mp3">Your browser does not support audio playback.</audio>
+          <p id="music-status" class="music-status" role="status">Press play whenever you’re ready.</p>
+          <p class="song-note">Let this play while you wander.</p>
+        </div>
+      </div>
+    </section>
+    <section id="memories" class="section">
+      <div class="section-heading"><p class="small-label">little pieces of us · 14 memories</p><h2>Moments I keep replaying.</h2><p class="section-intro">Tap a photo. Stay in the moment a little longer.</p></div>
+      <!-- Edit each caption and data-story below to add your own inside jokes and memories. -->
+      <div class="polaroid-grid">
+      <a class="polaroid rotate-left" href="photos/auto.jpeg" data-story="Wherever we’re going, I want more of the getting-there with you." aria-label="Open photo 1: my favourite place is beside you">
+        <img src="photos/auto.jpeg" alt="Saved memory 1" loading="lazy" decoding="async" width="600" height="720">
+        <p>my favourite place is beside you ♡</p>
+      </a>
+      <a class="polaroid rotate-right" href="photos/bmtcone.jpeg" data-story="I want to keep the small moments too. They deserve a place here." aria-label="Open photo 2: the little journeys">
+        <img src="photos/bmtcone.jpeg" alt="Saved memory 2" loading="lazy" decoding="async" width="600" height="720">
+        <p>the little journeys ♡</p>
+      </a>
+      <a class="polaroid rotate-left-small" href="photos/f16.jpeg" data-story="Some photos belong somewhere better than the bottom of a camera roll." aria-label="Open photo 3: one for the memory box">
+        <img src="photos/f16.jpeg" alt="Saved memory 3" loading="lazy" decoding="async" width="600" height="720">
+        <p>one for the memory box ♡</p>
+      </a>
+      <a class="polaroid rotate-left" href="photos/f16group.jpeg" data-story="I like having these little pieces of life to look back on." aria-label="Open photo 4: a little piece of our world">
+        <img src="photos/f16group.jpeg" alt="Saved memory 4" loading="lazy" decoding="async" width="600" height="720">
+        <p>a little piece of our world ♡</p>
+      </a>
+      <a class="polaroid rotate-right" href="photos/f16p2.jpeg" data-story="One photo never feels like enough when it’s a memory I want to keep." aria-label="Open photo 5: worth keeping twice">
+        <img src="photos/f16p2.jpeg" alt="Saved memory 5" loading="lazy" decoding="async" width="600" height="720">
+        <p>worth keeping twice ♡</p>
+      </a>
+      <a class="polaroid rotate-left-small" href="photos/herwallpp.jpeg" data-story="A little reminder of someone who means a lot to me." aria-label="Open photo 6: a favourite view">
+        <img src="photos/herwallpp.jpeg" alt="Saved memory 6" loading="lazy" decoding="async" width="600" height="720">
+        <p>a favourite view ♡</p>
+      </a>
+      <a class="polaroid rotate-left" href="photos/jook.jpeg" data-story="If I could tuck a moment into a pocket, I’d keep it close." aria-label="Open photo 7: a moment to come back to">
+        <img src="photos/jook.jpeg" alt="Saved memory 7" loading="lazy" decoding="async" width="600" height="720">
+        <p>a moment to come back to ♡</p>
+      </a>
+      <a class="polaroid rotate-right" href="photos/lake.jpeg" data-story="Here’s to taking our time, and finding more moments worth saving." aria-label="Open photo 8: let’s stay a little longer">
+        <img src="photos/lake.jpeg" alt="Saved memory 8" loading="lazy" decoding="async" width="600" height="720">
+        <p>let’s stay a little longer ♡</p>
+      </a>
+      <a class="polaroid rotate-left-small" href="photos/numetal.jpeg" data-story="Some songs get stuck in my head. You get a whole website." aria-label="Open photo 9: you, on repeat">
+        <img src="photos/numetal.jpeg" alt="Saved memory 9" loading="lazy" decoding="async" width="600" height="720">
+        <p>you, on repeat ♡</p>
+      </a>
+      <a class="polaroid rotate-left" href="photos/pbh.jpeg" data-story="There doesn’t have to be a big occasion for me to want a photo of us." aria-label="Open photo 10: just us, just this">
+        <img src="photos/pbh.jpeg" alt="Saved memory 10" loading="lazy" decoding="async" width="600" height="720">
+        <p>just us, just this ♡</p>
+      </a>
+      <a class="polaroid rotate-right" href="photos/pbhkies.jpeg" data-story="A few pixels, a lot of affection." aria-label="Open photo 11: a little closer">
+        <img src="photos/pbhkies.jpeg" alt="Saved memory 11" loading="lazy" decoding="async" width="600" height="720">
+        <p>a little closer ♡</p>
+      </a>
+      <a class="polaroid rotate-left-small" href="photos/vinatgeweird.jpeg" data-story="I don’t need every photo to be perfect. I just want it to be ours." aria-label="Open photo 12: perfectly imperfect">
+        <img src="photos/vinatgeweird.jpeg" alt="Saved memory 12" loading="lazy" decoding="async" width="600" height="720">
+        <p>perfectly imperfect ♡</p>
+      </a>
+      <a class="polaroid rotate-left" href="photos/vintagecute.jpeg" data-story="This little corner of the internet is my way of keeping you close." aria-label="Open photo 13: keep this one forever">
+        <img src="photos/vintagecute.jpeg" alt="Saved memory 13" loading="lazy" decoding="async" width="600" height="720">
+        <p>keep this one forever ♡</p>
+      </a>
+      <a class="polaroid rotate-right" href="photos/wallppcarousel.jpeg" data-story="Fourteen photos for now. So much room for whatever comes next." aria-label="Open photo 14: more of this, please">
+        <img src="photos/wallppcarousel.jpeg" alt="Saved memory 14" loading="lazy" decoding="async" width="600" height="720">
+        <p>more of this, please ♡</p>
+      </a>
+      </div>
+    </section>
+    <section id="little-things" class="section">
+      <div class="section-heading"><p class="small-label">it’s the little things</p><h2>What I want more of.</h2></div>
+      <!-- These notes are editable drafts, rather than invented accounts of specific events. -->
+      <div class="note-grid">
+        <article class="sticky-note note-one"><span class="note-number" aria-hidden="true">01</span><p>More ordinary days with you. The ones we don’t have to plan.</p></article>
+        <article class="sticky-note note-two"><span class="note-number" aria-hidden="true">02</span><p>More of the little things you want to tell me. I want to hear them.</p></article>
+        <article class="sticky-note note-three"><span class="note-number" aria-hidden="true">03</span><p>More songs to send you with “this made me think of you.”</p></article>
+        <article class="sticky-note note-four"><span class="note-number" aria-hidden="true">04</span><p>More photos that don’t need to be perfect to mean everything.</p></article>
+      </div>
+    </section>
+    <section id="letter" class="section final-section">
+      <p class="small-label">one last thing, before you go</p><h2>This one’s for you.</h2>
+      <details class="letter-envelope">
+        <summary><span class="envelope-icon" aria-hidden="true">✉</span><span class="envelope-label">A letter, sealed with love</span><span class="envelope-hint">Tap to open ♡</span></summary>
+        <!-- Edit the letter here. -->
+        <article class="letter-card">
+          <h3>Hey, you.</h3>
+          <p>I wanted to make you something you could come back to. A few photos, a couple of songs, and a little place that exists because you matter to me.</p>
+          <p>I’m still finding the words for everything I want to say. But I can start here: I love you, and I want to keep finding ways to show you.</p>
+          <p>I want to hear about your day. I want to make things with you, save more photos, and keep making room for the little moments in between.</p>
+          <p>There’s room here for more. More music, more memories, more of us. For now, I hope this makes you smile.</p>
+          <p class="signature">With love,<br>Saawan ♡</p>
+        </article>
+      </details>
+      <p class="final-line">More memories to come.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><p>Made for you, with love.</p><button type="button" id="secret-heart" aria-label="Open a little secret">♡</button></footer>
+  <dialog id="photo-dialog" aria-labelledby="photo-title" aria-describedby="photo-story">
+    <button type="button" class="dialog-close" aria-label="Close photo" autofocus>×</button>
+    <img id="photo-full" alt="">
+    <div class="photo-copy"><p class="small-label" id="photo-counter"></p><h2 id="photo-title"></h2><p id="photo-story"></p></div>
+    <div class="photo-navigation"><button type="button" id="previous-photo" aria-label="Previous photo">← Previous</button><button type="button" id="next-photo" aria-label="Next photo">Next →</button></div>
+  </dialog>
+  <dialog id="secret-dialog" aria-labelledby="secret-title">
+    <button type="button" class="dialog-close" aria-label="Close secret note" autofocus>×</button><p class="secret-symbol" aria-hidden="true">♡</p><h2 id="secret-title">You found me.</h2><p>One more “I love you”, tucked away just for you.</p><p class="handwritten">Even in the smallest corners.</p>
+  </dialog>
+</body>
+</html>
