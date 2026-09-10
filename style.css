@@ -1216,3 +1216,130 @@ body.modal-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+
+/* Midnight scrapbook — typography, tactile surfaces, and gentle movement. */
+:root {
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --handwriting: "Caveat", "Segoe Print", cursive;
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%2372523c' opacity='.065' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+body { isolation: isolate; }
+.ambient-light {
+  position: fixed; inset: -15%; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 75% 20%,#9a516f1c,transparent 45%), radial-gradient(ellipse at 15% 75%,#b8945314,transparent 40%);
+  animation: ambient-breathe 16s ease-in-out infinite alternate;
+}
+@keyframes ambient-breathe { to { transform: translate3d(-2%,3%,0); opacity: .55; } }
+.stars { z-index: -1; opacity: .045; }
+.wordmark { font: 2.25rem var(--handwriting); }
+.hero { position: relative; }
+.hero h1 { font-weight: 400; letter-spacing: -.045em; }
+.hero h1 span { font-style: italic; }
+.hero-scribble { font: 1.75rem var(--handwriting); color: var(--rose-light); transform: rotate(-9deg); align-self: center; margin: .5rem 0 0 12rem; }
+.hero-text { font-size: clamp(1.6rem,3vw,2.4rem); }
+.handwritten { font-size: 1.9rem; }
+.section-heading h2 { font-size: clamp(2.7rem,5.5vw,4.6rem); font-weight: 500; }
+.margin-note { font: 1.7rem var(--handwriting); color: #d2b8bd; text-align: right; margin: -1rem 1rem 2.5rem; transform: rotate(2deg); }
+.polaroid-grid { grid-template-columns: repeat(6,minmax(0,1fr)); gap: 3rem 2rem; max-width: none; align-items: center; padding: 1.2rem; }
+.polaroid {
+  grid-column: span 2; position: relative; background-color: #f4eee5; background-image: var(--paper-grain);
+  padding: 12px 12px 22px; border-radius: 2px 4px 3px 1px;
+  border: 1px solid #ddcdb980;
+  box-shadow: 1px 2px 2px #0003, 0 14px 28px #0004, inset 0 0 15px #9c795316;
+  --tilt: -3deg; transform: rotate(var(--tilt));
+}
+.polaroid.rotate-right { --tilt: 3deg; }
+.polaroid.rotate-left-small { --tilt: -1.5deg; }
+.polaroid:nth-child(7n+1), .polaroid:nth-child(7n+4) { grid-column: span 3; }
+.polaroid:nth-child(7n+1) img, .polaroid:nth-child(7n+4) img { aspect-ratio: 6 / 5; }
+.polaroid:nth-child(7n+3) { margin-left: -1rem; z-index: 1; }
+.polaroid:nth-child(7n+6) { margin-top: 1.8rem; }
+.polaroid::before, .sticky-note::before {
+  content: ""; position: absolute; top: -12px; left: calc(50% - 40px); width: 80px; height: 26px;
+  background: #d8bc8885; background-image: var(--paper-grain); transform: rotate(-6deg); z-index: 2;
+  border-left: 1px dashed #c5ae8070; border-right: 1px dashed #c5ae8070; pointer-events: none;
+}
+.polaroid:nth-child(3n)::before { left: 10px; transform: rotate(-25deg); width: 62px; }
+.polaroid:nth-child(4n)::after { content: "♡"; position: absolute; bottom: -18px; right: 2px; color: #ae5367; font: 3rem var(--handwriting); transform: rotate(12deg); pointer-events: none; }
+.polaroid img { filter: saturate(.94) contrast(.98); border: 1px solid #332c2c12; }
+.polaroid p { font-size: clamp(1.35rem,2.1vw,1.8rem); line-height: 1.25; margin-top: 1rem; padding: 0 .3rem; }
+.polaroid:hover, .polaroid:focus-visible { z-index: 3; transform: rotate(0deg) translateY(-6px); box-shadow: 0 22px 40px #0006; }
+.sticky-note { background-image: var(--paper-grain); border-radius: 1px 4px 2px 6px; box-shadow: 2px 6px 8px #0002, 0 22px 35px #0003, inset 0 -3px 8px #6c462a0c; }
+.sticky-note p { font: 1.9rem/1.35 var(--handwriting); }
+.note-number { font: 1.1rem var(--sans); letter-spacing: .12em; color: #805d65; }
+.note-grid { gap: 2.5rem; }
+.music-card { border-radius: 8px; padding: clamp(1.4rem,4vw,3rem); background: linear-gradient(125deg,#1b2337e8,#131725); border-color: #d2b07238; }
+.album-cover { flex: 0 0 270px; background: var(--cream); background-image: var(--paper-grain); padding: 10px 10px 8px; transform: rotate(-4deg); box-shadow: 0 15px 30px #0005; }
+.album-cover img { width: 100%; height: auto; aspect-ratio: 1; border-radius: 0; }
+.album-caption { color: #694550; font: 1.6rem var(--handwriting); text-align: center; margin-top: .5rem; }
+.player-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.player-heading .playing { margin-bottom: 0; }
+.record-icon { color: var(--rose-light); flex-shrink: 0; animation: record-turn 6s linear infinite; animation-play-state: paused; }
+.music-card.is-playing .record-icon { animation-play-state: running; }
+@keyframes record-turn { to { transform: rotate(360deg); } }
+.song-info h3 { font-size: 3.1rem; font-weight: 500; }
+.track-button { border-radius: 5px; transition: background .2s, border-color .2s; }
+.track-button[aria-pressed="true"] { color: var(--rose-light); background: #c9839018; border-color: var(--rose); }
+.playback-row { display: flex; align-items: center; gap: 1rem; margin-top: 1.4rem; }
+.play-toggle { display: grid; place-items: center; width: 54px; height: 54px; flex-shrink: 0; border: 0; border-radius: 50%; background: var(--rose-light); color: #291721; transition: transform .2s, background .2s; }
+.play-toggle:hover { background: #f0c1c9; transform: scale(1.05); }
+.seek-wrap { flex: 1; min-width: 0; }
+#music-seek { display: block; width: 100%; height: 24px; margin: 0; cursor: pointer; appearance: none; -webkit-appearance: none; background: transparent; --progress: 0%; }
+#music-seek::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right,var(--rose-light) var(--progress),#ffffff25 var(--progress)); }
+#music-seek::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; background: var(--cream); border: 2px solid var(--rose); width: 14px; height: 14px; border-radius: 50%; margin-top: -5px; }
+#music-seek::-moz-range-track { height: 4px; border-radius: 4px; background: #ffffff25; }
+#music-seek::-moz-range-progress { background: var(--rose-light); height: 4px; }
+#music-seek::-moz-range-thumb { background: var(--cream); border: 2px solid var(--rose); width: 10px; height: 10px; border-radius: 50%; }
+#music-seek:disabled { opacity: .4; cursor: default; }
+.player-times { display: flex; justify-content: space-between; font-size: .875rem; font-variant-numeric: tabular-nums; color: #c9bcc6; }
+.song-note { font-size: 1.8rem; }
+.music-status { min-height: 1.7em; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.letter-envelope { perspective: 1000px; }
+.letter-envelope summary { position: relative; background-image: var(--paper-grain); padding: 2rem; border-radius: 3px 6px 2px 4px; transition: box-shadow .4s, transform .4s; }
+.letter-envelope summary:hover { box-shadow: 0 25px 65px #0006; transform: translateY(-3px); }
+.envelope-icon { display: block; margin: 0 auto .5rem; overflow: visible; }
+.envelope-flap { transform-box: fill-box; transform-origin: center top; transition: transform .65s ease; }
+.letter-envelope[open] .envelope-flap { transform: scaleY(-1); }
+.letter-seal { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #8e3e53; color: #f6ddce; box-shadow: inset 0 0 0 3px #ffffff15, 0 3px 6px #0002; font: 2rem var(--handwriting); margin: -.6rem auto 1rem; transition: transform .5s, opacity .5s; }
+.letter-envelope[open] .letter-seal { transform: rotate(-20deg) scale(.85); opacity: .55; }
+.envelope-label { font-family: var(--handwriting); font-size: 2rem; }
+.letter-card { background-image: var(--paper-grain); border-radius: 2px 5px 3px 8px; border-bottom: 3px double #cdbda4; }
+.letter-card::before { background-image: var(--paper-grain); }
+.letter-card p { font-size: 1.0625rem; line-height: 1.95; }
+.letter-card .signature { font-size: 2.2rem; line-height: 1.3; }
+.letter-envelope[open] .letter-card { animation: letter-unfold .9s .15s both cubic-bezier(.2,.7,.2,1); }
+@keyframes letter-unfold { from { opacity: 0; transform: translateY(-35px) rotate(-1deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+dialog[open] { animation: dialog-arrive .3s ease-out; }
+@keyframes dialog-arrive { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+.photo-copy h2 { font: 2.2rem/1.2 var(--handwriting); color: var(--rose-light); }
+.scroll-button { font-size: .9375rem; }
+@media (min-width: 769px) and (max-width: 1000px) {
+  .polaroid-grid { gap: 2.5rem 1.2rem; }
+  .album-cover { flex-basis: 220px; }
+}
+@media (max-width: 768px) {
+  .polaroid-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2.8rem 1.2rem; padding: .6rem; }
+  .polaroid, .polaroid:nth-child(7n+1), .polaroid:nth-child(7n+4) { grid-column: span 1; margin: 0; --tilt: -2deg; }
+  .polaroid.rotate-right { --tilt: 2deg; }
+  .polaroid:nth-child(5n+1) { grid-column: 1 / -1; width: 85%; justify-self: center; }
+  .polaroid:nth-child(5n+1) img { aspect-ratio: 6/5; }
+  .polaroid img { aspect-ratio: 5/6; }
+  .polaroid { padding: 8px 8px 16px; }
+  .polaroid p { font-size: 1.4rem; }
+  .album-cover { flex: none; width: min(85%,260px); margin: .5rem auto 1.5rem; }
+  .song-info h3 { font-size: 2.8rem; }
+  .margin-note { font-size: 1.5rem; margin-right: 0; text-align: center; }
+  .hero-scribble { margin-left: 7rem; }
+}
+@media (max-width: 420px) {
+  .polaroid-grid { grid-template-columns: 1fr; padding: 1rem; }
+  .polaroid, .polaroid:nth-child(5n+1) { width: 100%; grid-column: 1; }
+  .polaroid img { aspect-ratio: 5/6; }
+  .hero-scribble { margin-left: 4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-light, .record-icon, .letter-envelope[open] .letter-card, dialog[open] { animation: none !important; }
+  .polaroid:hover, .letter-envelope summary:hover, .play-toggle:hover { transform: none; }
+}
