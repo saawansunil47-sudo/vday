@@ -2,153 +2,475 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>For Us</title>
+  <title>For You</title>
 
-  <!-- Handwritten font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>SANDMAN</h1>
-    <p class="subtitle">This little corner of the internet is ours.:)👅</p>
+  <!-- Background decorations -->
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+  <div class="stars"></div>
 
-    <section class="card">
-      <h2>Why you matter</h2>
-      <p>
-        Somewhere between ordinary days and drunk conversations,
-        you became my favorite person.
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section reveal">
+
+      <p class="eyebrow">a little corner of the internet</p>
+
+      <h1>
+        hey,
+        <span>you.</span>
+      </h1>
+
+      <p class="hero-text">
+        Still my favorite place to come back to.
       </p>
-    </section>
 
-    <!-- JUKEBOX -->
-    <section class="card">
-      <h2>Our songs <3</h2>
-
-      <audio id="player" controls></audio>
-
-      <div class="playlist">
-        <button onclick="playSong('Daniel Caesar - Always (Official Audio).mp3')">
-          Always — Daniel Caesar
-        </button>
-        <button onclick="playSong('Ravyn Lenae - Love Me Not.mp3')">
-          Love Me Not — Ravyn Lenae
-        </button>
+      <div class="hero-divider">
+        <span></span>
+        <p>♡</p>
+        <span></span>
       </div>
+
+      <p class="handwritten">
+        made with an unreasonable amount of love
+      </p>
+
+      <a href="#memories" class="scroll-button">
+        come with me
+      </a>
+
     </section>
 
-    <!-- SCRAPBOOK -->
-    <section class="card">
-      <h2>Some moments I keep</h2>
 
-      <div class="scrapbook">
+    <!-- INTRO NOTE -->
+    <section class="section reveal">
 
-        <div class="polaroid">
-  <img src="photos/auto.jpeg">
-  <p class="caption">Our first photo :).</p>
-</div>
+      <div class="letter-card">
 
-<div class="polaroid">
-  <img src="photos/bmtcone.jpeg">
-  <p class="caption">Yes i will put a farhan akhtar song on this what youlldo?.</p>
-</div>
+        <p class="small-label">
+          somewhere between then and now
+        </p>
 
-<div class="polaroid">
-  <img src="photos/f16.jpeg">
-  <p class="caption">v v fun day but ye abi character development.</p>
-</div>
+        <h2>
+          You became part of everything.
+        </h2>
 
-<div class="polaroid">
-  <img src="photos/f16group.jpeg">
-  <p class="caption">NIMHANS catalogue only.</p>
-</div>
+        <p>
+          Somewhere between ordinary days, late-night conversations,
+          stupid jokes, long calls, quiet moments and everything in between,
+          you stopped feeling like someone I loved and started feeling like
+          somewhere I belonged.
+        </p>
 
-<div class="polaroid">
-  <img src="photos/f16p2.jpeg">
-  <p class="caption">Back to our good old vintage.</p>
-</div>
+        <p>
+          Nothing dramatic. Nothing perfect.
+          Just something real enough that I keep choosing it.
+        </p>
 
-<div class="polaroid">
-  <img src="photos/herwallpp.jpeg">
-  <p class="caption">One of if not the best of ours :))<3.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/jook.jpeg">
-  <p class="caption">Another banger photo.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/lake.jpeg">
-  <p class="caption">Our best sober hangout spot.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/numetal.jpeg">
-  <p class="caption">Idk what we are doing here.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/pbh.jpeg">
-  <p class="caption">V special b'day thank you bb :).</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/pbhkies.jpeg">
-  <p class="caption">AYYYYYYY.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/vinatgeweird.jpeg">
-  <p class="caption">YES.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/vintagecute.jpeg">
-  <p class="caption">Banger only.</p>
-</div>
-
-<div class="polaroid">
-  <img src="photos/wallppcarousel.jpeg">
-  <p class="caption">Another sober spot appreciation <3.</p>
-</div>
-
+        <div class="signature">
+          always yours ♡
+        </div>
 
       </div>
+
     </section>
 
-    <footer>
-      <p>Happy Valentine’s Day ❤️</p>
-    </footer>
-  </div>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img">
-  </div>
+    <!-- POLAROIDS -->
+    <section id="memories" class="section reveal">
 
-  <script>
-    const player = document.getElementById("player");
+      <div class="section-heading">
+        <p class="small-label">
+          little pieces of us
+        </p>
 
-    function playSong(song) {
-      player.src = "music/" + song;
-      player.play();
-    }
+        <h2>
+          Moments I keep replaying
+        </h2>
+      </div>
 
-    function openLightbox(img) {
-      document.getElementById("lightbox-img").src = img.src;
-      document.getElementById("lightbox").style.display = "flex";
-    }
+      <div class="polaroid-grid">
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-  </script>
+        <div class="polaroid rotate-left">
+          <img src="images/photo1.jpg" alt="Memory one">
+
+          <p>
+            one of my favorite days
+          </p>
+        </div>
+
+        <div class="polaroid rotate-right">
+          <img src="images/photo2.jpg" alt="Memory two">
+
+          <p>
+            you being you
+          </p>
+        </div>
+
+        <div class="polaroid rotate-left-small">
+          <img src="images/photo3.jpg" alt="Memory three">
+
+          <p>
+            somehow, still my favorite
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- THINGS I LOVE -->
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <p class="small-label">
+          tiny things i never say enough
+        </p>
+
+        <h2>
+          Things about you that stay with me
+        </h2>
+      </div>
+
+      <div class="note-grid">
+
+        <article class="sticky-note note-one">
+
+          <span class="note-number">
+            01
+          </span>
+
+          <p>
+            The way you laugh when something catches you completely off guard.
+          </p>
+
+        </article>
+
+
+        <article class="sticky-note note-two">
+
+          <span class="note-number">
+            02
+          </span>
+
+          <p>
+            How even completely ordinary days somehow feel different when
+            you're part of them.
+          </p>
+
+        </article>
+
+
+        <article class="sticky-note note-three">
+
+          <span class="note-number">
+            03
+          </span>
+
+          <p>
+            The way talking to you can make the entire world feel a little
+            quieter.
+          </p>
+
+        </article>
+
+
+        <article class="sticky-note note-four">
+
+          <span class="note-number">
+            04
+          </span>
+
+          <p>
+            Your kindness, even when you pretend you're far tougher than
+            you actually are.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- MUSIC -->
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <p class="small-label">
+          songs that became ours
+        </p>
+
+        <h2>
+          Our little soundtrack
+        </h2>
+      </div>
+
+      <div class="music-card">
+
+        <div class="album-cover">
+          <img src="images/album.jpg" alt="Album cover">
+        </div>
+
+        <div class="song-info">
+
+          <p class="playing">
+            NOW PLAYING
+          </p>
+
+          <h3>
+            Your Song Name
+          </h3>
+
+          <p class="artist">
+            Artist Name
+          </p>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+
+          <div class="timestamps">
+            <span>2:14</span>
+            <span>3:47</span>
+          </div>
+
+          <p class="song-note">
+            Somehow this one stopped being just a song.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TIMELINE -->
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <p class="small-label">
+          somewhere between then and now
+        </p>
+
+        <h2>
+          A very small history of us
+        </h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <p class="timeline-date">
+              THE BEGINNING
+            </p>
+
+            <h3>
+              When everything started changing
+            </h3>
+
+            <p>
+              What began as conversations slowly became the part of my day
+              I looked forward to most.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <p class="timeline-date">
+              SOMEWHERE AFTER
+            </p>
+
+            <h3>
+              When "you" became "us"
+            </h3>
+
+            <p>
+              Somewhere along the way, everything started feeling less
+              temporary.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <p class="timeline-date">
+              NOW
+            </p>
+
+            <h3>
+              Still choosing you
+            </h3>
+
+            <p>
+              Through good days, difficult ones, stupid arguments,
+              inside jokes and everything still waiting for us.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <p class="small-label">
+          someday
+        </p>
+
+        <h2>
+          Things I still want to do with you
+        </h2>
+      </div>
+
+      <div class="bucket-card">
+
+        <label>
+          <input type="checkbox" />
+          <span>
+            Travel somewhere neither of us has ever been
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          <span>
+            Make another ridiculous little project together
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          <span>
+            Watch sunrise after staying awake far too late
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          <span>
+            Build a playlist that gets embarrassingly long
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          <span>
+            Make enough memories that this page needs another page
+          </span>
+        </label>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROMISE -->
+    <section class="section reveal">
+
+      <div class="promise-card">
+
+        <p class="small-label">
+          one thing i mean completely
+        </p>
+
+        <h2>
+          I won't always get everything right.
+        </h2>
+
+        <p>
+          I'll misunderstand things. I'll annoy you.
+          I'll overthink. I'll say the wrong thing sometimes.
+        </p>
+
+        <p>
+          But I want to keep learning you.
+          I want to keep showing up.
+          And I want to keep choosing you in all the quiet,
+          ordinary ways that actually matter.
+        </p>
+
+        <div class="promise-heart">
+          ♡
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final-section section reveal">
+
+      <p class="small-label">
+        for the days you forget
+      </p>
+
+      <h2>
+        You are loved.
+      </h2>
+
+      <p>
+        On good days.<br>
+        On difficult days.<br>
+        On days when you feel impossible to love.
+      </p>
+
+      <p class="final-line">
+        Especially then.
+      </p>
+
+      <div class="final-heart">
+        ❤
+      </div>
+
+      <p class="footer-text">
+        made for you, always.
+      </p>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
