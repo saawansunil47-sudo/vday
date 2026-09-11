@@ -1426,3 +1426,24 @@ button,summary,input{font:inherit}
 .bouquet-wrap{z-index:4;bottom:-34px;width:320px;height:480px;background:url("assets/bouquet-wrap.webp") center/100% 100% no-repeat;clip-path:inset(46% 0 0 0);mix-blend-mode:screen;filter:none}
 .bouquet-wrap::before,.bouquet-wrap::after{content:none}.bouquet-knot{display:none}
 @media(max-width:620px){.bouquet-stage{min-height:350px}.bouquet-stage.has-flowers::before,.bouquet-wrap{bottom:-26px;width:270px;height:405px}.bouquet-flower{width:88px;height:172px;margin-inline:-27px}}
+
+
+/* ===== Reliable wrapped bouquet (v12) ===== */
+.bouquet-stage.has-flowers::before,
+.bouquet-wrap{
+  background-image:url("assets/bouquet-wrap.webp");
+  background-position:center;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  mix-blend-mode:normal;
+  opacity:1;
+}
+.bouquet-stage.has-flowers::before{
+  z-index:1;
+  filter:drop-shadow(0 14px 15px rgba(0,0,0,.28));
+}
+.bouquet-wrap{
+  z-index:5;
+  clip-path:inset(42% 0 0 0);
+  filter:drop-shadow(0 14px 15px rgba(0,0,0,.32));
+}
