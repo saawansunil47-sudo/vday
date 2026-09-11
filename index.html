@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
-  <script src="script.js?v=7" defer></script>
+  <link rel="stylesheet" href="style.css?v=8">
+  <script src="script.js?v=8" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#memories">Skip to our photos</a>
@@ -337,6 +337,35 @@
         <canvas id="doodle-canvas" width="900" height="480" aria-label="A blank drawing canvas"></canvas>
         <p id="doodle-status" class="widget-status" aria-live="polite"></p>
       </article>
+    </section>
+
+
+    <section id="memory-map" class="section memory-map-section">
+      <div class="section-heading"><p class="small-label">not to scale, exactly how I remember it</p><h2>Our little map.</h2><p class="section-intro">Every place became different after there was an us in it.</p></div>
+      <div class="memory-map-shell">
+        <div class="memory-map-board" aria-label="An illustrated map of our memories">
+          <svg class="memory-route" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M115 145 C190 55 280 65 345 105 S485 200 555 145 S720 35 790 90 S915 235 850 305 S720 410 640 420 S495 330 390 365 S250 520 155 465"/>
+            <path class="route-dashes" d="M115 145 C190 55 280 65 345 105 S485 200 555 145 S720 35 790 90 S915 235 850 305 S720 410 640 420 S495 330 390 365 S250 520 155 465"/>
+          </svg>
+          <span class="map-doodle map-doodle-one" aria-hidden="true">♡</span><span class="map-doodle map-doodle-two" aria-hidden="true">✦</span><span class="map-doodle map-doodle-three" aria-hidden="true">our Bengaluru</span>
+          <button type="button" class="memory-pin pin-vintage" data-photo="6" data-place="The vintage visit" aria-pressed="false"><span class="pin-marker">●</span><span>The vintage visit</span></button>
+          <button type="button" class="memory-pin pin-f16" data-photo="3" data-place="F16" aria-pressed="false"><span class="pin-marker">●</span><span>F16</span></button>
+          <button type="button" class="memory-pin pin-nimhans" data-photo="4" data-place="NIMHANS" aria-pressed="false"><span class="pin-marker">●</span><span>NIMHANS</span></button>
+          <button type="button" class="memory-pin pin-lake active" data-photo="8" data-place="The lake" aria-pressed="true"><span class="pin-marker">●</span><span>The lake</span></button>
+          <button type="button" class="memory-pin pin-pbh" data-photo="10" data-place="PBH" aria-pressed="false"><span class="pin-marker">●</span><span>PBH</span></button>
+          <button type="button" class="memory-pin pin-shettys" data-photo="16" data-place="Shetty’s" aria-pressed="false"><span class="pin-marker">●</span><span>Shetty’s</span></button>
+          <button type="button" class="memory-pin pin-hoc" data-photo="22" data-place="HOC" aria-pressed="false"><span class="pin-marker">●</span><span>HOC</span></button>
+          <button type="button" class="memory-pin pin-invincia" data-photo="24" data-place="Invincia" aria-pressed="false"><span class="pin-marker">●</span><span>Invincia</span></button>
+        </div>
+        <aside class="map-memory-card" aria-live="polite">
+          <div class="map-photo-frame"><img id="map-memory-photo" src="photos/lake.jpeg" alt="Memory from The lake"></div>
+          <p class="small-label">you are here</p>
+          <h3 id="map-memory-title">The lake</h3>
+          <p id="map-memory-story">One of our best sober hangout spots, the one place where we become socrates and plato.</p>
+          <button type="button" id="open-map-memory" class="ink-button">Open this memory ♡</button>
+        </aside>
+      </div>
     </section>
 
     <section id="letter" class="section final-section">
