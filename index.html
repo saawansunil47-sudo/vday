@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
-  <script src="script.js?v=6" defer></script>
+  <link rel="stylesheet" href="style.css?v=7">
+  <script src="script.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#memories">Skip to our photos</a>
   <div class="stars" aria-hidden="true"></div><div class="ambient-light" aria-hidden="true"></div>
-  <header class="site-header"><a href="#home" class="wordmark">for you.</a><nav aria-label="Main navigation"><a href="#soundtrack">Our soundtrack</a><a href="#memories">Memories</a><a href="#discover">Discover</a><a href="#letter">A letter</a></nav></header>
+  <header class="site-header"><a href="#home" class="wordmark">for you.</a><nav aria-label="Main navigation"><a href="#soundtrack">Our soundtrack</a><a href="#memories">Memories</a><a href="#discover">Discover</a><a href="#play-together">Play</a><a href="#letter">A letter</a></nav></header>
   <main>
     <section id="home" class="section hero">
       <p class="eyebrow">a little collection of us</p>
@@ -277,6 +277,65 @@
           </div>
           <p id="nickname-result" class="nickname-result" aria-live="polite"></p>
         </form>
+      </article>
+    </section>
+
+
+    <section id="play-together" class="section play-section">
+      <div class="section-heading"><p class="small-label">pick something, make something</p><h2>Come play with me.</h2><p class="section-intro">Four tiny ways to turn this page into one of our dates.</p></div>
+      <div class="play-grid">
+        <article class="interactive-card date-builder">
+          <p class="widget-number">08</p><h3>Build our next date.</h3><p class="widget-intro">Choose the mood. I will handle the questionable planning.</p>
+          <form id="date-builder-form">
+            <label>Mood<select id="date-mood"><option value="peaceful">Peaceful</option><option value="chaotic">Chaotic</option></select></label>
+            <label>Where<select id="date-setting"><option value="outdoors">Outdoors</option><option value="indoors">Indoors</option></select></label>
+            <label>Budget<select id="date-budget"><option value="cheap">Wallet-friendly</option><option value="treat">We deserve a treat</option></select></label>
+            <label>Main event<select id="date-plan"><option value="food">Food</option><option value="activity">Activity</option><option value="wandering">Just wandering</option></select></label>
+            <button type="submit" class="ink-button">Plan it for us ✦</button>
+          </form>
+          <div id="date-result" class="date-result" aria-live="polite"><span>Our next plan is waiting.</span></div>
+        </article>
+
+        <article class="interactive-card record-roulette-card">
+          <p class="widget-number">09</p><h3>Let the record choose.</h3><p class="widget-intro">Spin it and surrender the aux.</p>
+          <button type="button" id="song-roulette" class="roulette-record" aria-label="Spin the record to choose a random song">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="55"/><circle cx="60" cy="60" r="36"/><circle cx="60" cy="60" r="12"/><circle cx="60" cy="60" r="3"/><path d="M60 19a41 41 0 0 1 35 20M25 83a41 41 0 0 1-5-31M95 80a41 41 0 0 1-29 20"/></svg>
+            <span>SPIN</span>
+          </button>
+          <p id="roulette-result" class="roulette-result" aria-live="polite">Six songs. One tiny fate machine.</p>
+        </article>
+      </div>
+
+      <article class="interactive-card bouquet-builder">
+        <p class="widget-number">10</p><h3>Build a bouquet.</h3><p class="widget-intro">Pick up to nine flowers. No wilting, no suspiciously expensive florist.</p>
+        <div class="flower-picker" role="group" aria-label="Choose flowers">
+          <button type="button" data-flower="🌹" aria-label="Add a rose">🌹<span>devotion</span></button>
+          <button type="button" data-flower="🌻" aria-label="Add a sunflower">🌻<span>warmth</span></button>
+          <button type="button" data-flower="🌷" aria-label="Add a tulip">🌷<span>affection</span></button>
+          <button type="button" data-flower="🌼" aria-label="Add a daisy">🌼<span>joy</span></button>
+          <button type="button" data-flower="🪻" aria-label="Add a hyacinth">🪻<span>patience</span></button>
+          <button type="button" data-flower="🌺" aria-label="Add a hibiscus">🌺<span>beauty</span></button>
+        </div>
+        <div id="bouquet-stage" class="bouquet-stage" aria-live="polite"><p>tap a flower to begin</p></div>
+        <div class="widget-actions"><button type="button" class="text-button" id="bouquet-undo">Undo</button><button type="button" class="text-button" id="bouquet-clear">Clear</button><button type="button" class="ink-button" id="bouquet-save">Save bouquet</button></div>
+        <p id="bouquet-status" class="widget-status" aria-live="polite"></p>
+      </article>
+
+      <article class="interactive-card doodle-card">
+        <p class="widget-number">11</p><h3>Leave a little doodle.</h3><p class="widget-intro">Draw something sweet, stupid or completely incomprehensible. Save it when it feels finished.</p>
+        <div class="doodle-toolbar" aria-label="Drawing controls">
+          <div class="ink-colors" role="group" aria-label="Choose ink colour">
+            <button type="button" class="ink-swatch active" data-ink="#be4168" style="--ink:#be4168" aria-label="Pink ink"></button>
+            <button type="button" class="ink-swatch" data-ink="#b58435" style="--ink:#b58435" aria-label="Gold ink"></button>
+            <button type="button" class="ink-swatch" data-ink="#22243a" style="--ink:#22243a" aria-label="Midnight ink"></button>
+          </div>
+          <label for="brush-size">Brush <input id="brush-size" type="range" min="2" max="22" value="6"></label>
+          <button type="button" class="text-button" id="doodle-undo">Undo</button>
+          <button type="button" class="text-button" id="doodle-clear">Clear</button>
+          <button type="button" class="ink-button" id="doodle-save">Save drawing</button>
+        </div>
+        <canvas id="doodle-canvas" width="900" height="480" aria-label="A blank drawing canvas"></canvas>
+        <p id="doodle-status" class="widget-status" aria-live="polite"></p>
       </article>
     </section>
 
