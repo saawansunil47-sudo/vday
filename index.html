@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
-  <script src="script.js?v=3" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="script.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#memories">Skip to our photos</a>
   <div class="stars" aria-hidden="true"></div><div class="ambient-light" aria-hidden="true"></div>
-  <header class="site-header"><a href="#home" class="wordmark">for you.</a><nav aria-label="Main navigation"><a href="#soundtrack">Our soundtrack</a><a href="#memories">Memories</a><a href="#letter">A letter</a></nav></header>
+  <header class="site-header"><a href="#home" class="wordmark">for you.</a><nav aria-label="Main navigation"><a href="#soundtrack">Our soundtrack</a><a href="#memories">Memories</a><a href="#discover">Discover</a><a href="#letter">A letter</a></nav></header>
   <main>
     <section id="home" class="section hero">
       <p class="eyebrow">a little collection of us</p>
@@ -23,6 +23,11 @@
       <p class="hero-text">Some moments deserve more than a camera roll.</p>
       <div class="hero-divider" aria-hidden="true"><span></span><p>♡</p><span></span></div>
       <p class="handwritten">So I made them a home.</p>
+      <div class="love-counter" aria-live="polite">
+        <span class="counter-label">loving you for</span>
+        <strong id="relationship-counter">counting every second…</strong>
+        <span class="counter-since">since 15 January 2026 · 1:37 PM</span>
+      </div>
       <a class="scroll-button" href="#soundtrack">Come sit with me</a>
     </section>
     <section id="soundtrack" class="section">
@@ -51,7 +56,10 @@
     <section id="memories" class="section">
       <div class="section-heading"><p class="small-label">little pieces of us</p><h2>Moments I keep replaying.</h2><p class="section-intro">Tap a photo. Stay in the moment a little longer.</p></div>
       <!-- Edit each caption and data-story below to add your own inside jokes and memories. -->
-      <p class="margin-note">a few things I never want to forget ↴</p>
+      <div class="memory-tools">
+        <p class="margin-note">a few things I never want to forget ↴</p>
+        <button type="button" id="random-memory" class="ink-button">Pick a memory for me ✦</button>
+      </div>
       <div class="polaroid-grid">
       <a class="polaroid rotate-left" href="photos/auto.jpeg" data-story="Wherever we’re going, I want more of the getting-there with you, and yk how fun our auto rides are ehehhe." aria-label="Open photo 1: my favourite place is beside you">
         <img src="photos/auto.jpeg" alt="Saved memory 1" loading="lazy" decoding="async" width="600" height="720">
@@ -173,6 +181,89 @@
         <article class="sticky-note note-four"><span class="note-number" aria-hidden="true">04</span><p>More photos that don’t need to be perfect to mean everything.</p></article>
       </div>
     </section>
+
+    <section id="photo-pile" class="section discovery-section">
+      <div class="section-heading"><p class="small-label">touch, move, remember</p><h2>A handful of us.</h2><p class="section-intro">Drag the photographs around. Tap one when you want the whole memory.</p></div>
+      <div class="photo-pile" id="draggable-photo-pile" aria-label="Draggable pile of memories">
+        <button type="button" class="loose-polaroid pile-one" data-photo="15" data-rotate="-7"><img src="photos/memory-15.jpeg" alt="Open memory 15" draggable="false"><span>that look ♡</span></button>
+        <button type="button" class="loose-polaroid pile-two" data-photo="18" data-rotate="6"><img src="photos/memory-18.jpeg" alt="Open memory 18" draggable="false"><span>kiss attack</span></button>
+        <button type="button" class="loose-polaroid pile-three" data-photo="20" data-rotate="-2"><img src="photos/memory-20.jpeg" alt="Open memory 20" draggable="false"><span>our kind of chaos</span></button>
+        <button type="button" class="loose-polaroid pile-four" data-photo="21" data-rotate="8"><img src="photos/memory-21.jpeg" alt="Open memory 21" draggable="false"><span>in red</span></button>
+        <button type="button" class="loose-polaroid pile-five" data-photo="24" data-rotate="-5"><img src="photos/memory-24.jpeg" alt="Open memory 24" draggable="false"><span>found you</span></button>
+        <button type="button" class="loose-polaroid pile-six" data-photo="27" data-rotate="3"><img src="photos/memory-27.jpeg" alt="Open memory 27" draggable="false"><span>leaning your way</span></button>
+      </div>
+    </section>
+
+    <section id="discover" class="section discovery-section">
+      <div class="section-heading"><p class="small-label">things hidden in plain sight</p><h2>A little more to discover.</h2><p class="section-intro">Some things should be opened slowly.</p></div>
+      <div class="discovery-grid">
+        <article class="interactive-card scratch-card-panel">
+          <p class="widget-number">01</p><h3>Scratch here.</h3><p class="widget-intro">There is a very serious declaration underneath.</p>
+          <div class="scratch-surface" id="scratch-surface"><p id="scratch-message">BOOBIES</p><canvas id="scratch-canvas" aria-label="Scratch away the cover to reveal a message" tabindex="0"></canvas></div>
+          <button type="button" class="text-button" id="reveal-scratch">I am too impatient</button>
+        </article>
+        <article class="interactive-card open-when-panel">
+          <p class="widget-number">02</p><h3>Open when…</h3>
+          <div class="open-when-list">
+            <details><summary>you miss me</summary><p>I am probably missing you too—more than I am saying and in all the small, inconvenient moments. Come back to our photos, play our song, and imagine me leaning into you.</p></details>
+            <details><summary>you are sad</summary><p>You do not have to make the sadness smaller for me. Let it be heavy. I will sit beside it with you until the weight shifts, even if neither of us knows what to say.</p></details>
+            <details><summary>you cannot sleep</summary><p>Unclench your jaw, drop your shoulders, and take one slow breath. The night does not need answers from you. Rest, Manda. Tomorrow can wait outside.</p></details>
+            <details><summary>you need reassurance</summary><p>I choose you deliberately—not only when everything is light and easy. You matter to me in the complicated hours too. I am here, and I love you.</p></details>
+            <details><summary>you are mad at me</summary><p>You are allowed to be angry. I will not hide behind jokes or rush you into forgiving me. Tell me what hurt; I want to understand it properly and do better.</p></details>
+          </div>
+        </article>
+      </div>
+      <article class="constellation-card interactive-card">
+        <p class="widget-number">03</p><h3>A constellation made of you.</h3><p class="widget-intro">Touch a star. Every one is holding something I love about you.</p>
+        <div class="constellation" id="constellation" aria-label="Clickable constellation of messages">
+          <span class="star-line line-one" aria-hidden="true"></span><span class="star-line line-two" aria-hidden="true"></span><span class="star-line line-three" aria-hidden="true"></span><span class="star-line line-four" aria-hidden="true"></span><span class="star-line line-five" aria-hidden="true"></span><span class="star-line line-six" aria-hidden="true"></span>
+          <button type="button" class="message-star star-one" data-message="You make ordinary days feel worth remembering." aria-label="Reveal star message one">✦</button>
+          <button type="button" class="message-star star-two" data-message="Your laugh has become one of my favourite sounds." aria-label="Reveal star message two">✧</button>
+          <button type="button" class="message-star star-three" data-message="I love the strange little world we make together." aria-label="Reveal star message three">✦</button>
+          <button type="button" class="message-star star-four" data-message="You are beautiful even when you are not trying to be." aria-label="Reveal star message four">✧</button>
+          <button type="button" class="message-star star-five" data-message="I want every version of you—the bright ones and the difficult ones." aria-label="Reveal star message five">✦</button>
+          <button type="button" class="message-star star-six" data-message="With you, even getting there becomes part of the memory." aria-label="Reveal star message six">✧</button>
+          <button type="button" class="message-star star-seven" data-message="You are the person I look for, even in a crowded room." aria-label="Reveal star message seven">✦</button>
+          <button type="button" class="message-star star-eight" data-message="Somehow, loving you keeps giving me more to look forward to." aria-label="Reveal star message eight">✧</button>
+          <p id="constellation-message" aria-live="polite">pick a star, my love</p>
+        </div>
+      </article>
+      <article class="interactive-card timeline-card">
+        <p class="widget-number">04</p><h3>Six chapters so far.</h3><p class="widget-intro">A timeline waiting for the dates and stories only we know.</p>
+        <!-- EDIT THESE SIX TIMELINE ITEMS: replace the date, heading and paragraph in each item. -->
+        <ol class="memory-timeline">
+          <li><time>YOUR DATE</time><div><h4>Memory one</h4><p>Write what happened here.</p></div></li>
+          <li><time>YOUR DATE</time><div><h4>Memory two</h4><p>Write what happened here.</p></div></li>
+          <li><time>YOUR DATE</time><div><h4>Memory three</h4><p>Write what happened here.</p></div></li>
+          <li><time>YOUR DATE</time><div><h4>Memory four</h4><p>Write what happened here.</p></div></li>
+          <li><time>YOUR DATE</time><div><h4>Memory five</h4><p>Write what happened here.</p></div></li>
+          <li><time>YOUR DATE</time><div><h4>Memory six</h4><p>Write what happened here.</p></div></li>
+        </ol>
+      </article>
+      <article class="interactive-card quiz-card">
+        <p class="widget-number">05</p><h3>The extremely official us quiz.</h3><p class="widget-intro">Five questions. Absolutely no pressure. Except there is a scoreboard.</p>
+        <!-- EDIT QUIZ: change question text/options below and each fieldset's data-answer (a, b, or c). -->
+        <form id="couple-quiz">
+          <fieldset data-answer="b"><legend>1. Who is more likely to steal the other person’s food?</legend><label><input type="radio" name="q1" value="a"> Saawan</label><label><input type="radio" name="q1" value="b"> Manda</label><label><input type="radio" name="q1" value="c"> Both, shamelessly</label></fieldset>
+          <fieldset data-answer="c"><legend>2. Our natural habitat is probably…</legend><label><input type="radio" name="q2" value="a"> somewhere suspiciously fancy</label><label><input type="radio" name="q2" value="b"> a silent library</label><label><input type="radio" name="q2" value="c"> wherever we can be idiots together</label></fieldset>
+          <fieldset data-answer="a"><legend>3. Who would survive longer in a zombie apocalypse?</legend><label><input type="radio" name="q3" value="a"> Manda</label><label><input type="radio" name="q3" value="b"> Saawan</label><label><input type="radio" name="q3" value="c"> The zombies</label></fieldset>
+          <fieldset data-answer="c"><legend>4. The correct number of photos of us is…</legend><label><input type="radio" name="q4" value="a"> 10</label><label><input type="radio" name="q4" value="b"> 27</label><label><input type="radio" name="q4" value="c"> never enough</label></fieldset>
+          <fieldset data-answer="b"><legend>5. What does Saawan want more of?</legend><label><input type="radio" name="q5" value="a"> sensible decisions</label><label><input type="radio" name="q5" value="b"> ordinary days with you</label><label><input type="radio" name="q5" value="c"> fewer photos</label></fieldset>
+          <button type="submit" class="ink-button">Reveal my score</button><p id="quiz-result" class="quiz-result" aria-live="polite"></p>
+        </form>
+      </article>
+      <article class="interactive-card time-capsule" id="time-capsule" data-unlock="2027-02-20T00:00:00+05:30">
+        <p class="widget-number">06</p>
+        <div class="capsule-locked" id="capsule-locked"><div class="capsule-seal" aria-hidden="true">♡</div><h3>For 20 February 2027.</h3><p>This one belongs to the future.</p><strong id="capsule-countdown">Counting down…</strong></div>
+        <div class="capsule-reveal" id="capsule-reveal" hidden>
+          <p class="small-label">the wait is over</p><h3>Happy Birthday my love</h3>
+          <div class="capsule-photo-frame"><img id="capsule-photo" src="photos/memory-18.jpeg" alt="A birthday memory"></div>
+          <label class="capsule-upload">Choose a photo from this device<input type="file" id="capsule-photo-input" accept="image/*"></label>
+          <p class="handwritten">Another year of you. What a beautiful thing.</p>
+        </div>
+      </article>
+    </section>
+
     <section id="letter" class="section final-section">
       <p class="small-label">one last thing, before you go</p><h2>This one’s for you.</h2>
       <details class="letter-envelope">
@@ -200,5 +291,11 @@
   <dialog id="secret-dialog" aria-labelledby="secret-title">
     <button type="button" class="dialog-close" aria-label="Close secret note" autofocus>×</button><p class="secret-symbol" aria-hidden="true">♡</p><h2 id="secret-title">You found me.</h2><p>One more “I love you”, tucked away just for you.</p><p class="handwritten">Even in the smallest corners.</p>
   </dialog>
+  <dialog id="manda-dialog" class="manda-dialog" aria-labelledby="manda-title">
+    <button type="button" class="dialog-close" aria-label="Close strawberry surprise" autofocus>×</button>
+    <img src="https://vignette.wikia.nocookie.net/cartooncharacters/images/d/d9/Barry_CwCoM2.jpg/revision/latest/scale-to-width-down/800?cb=20200711233125" alt="Barry the strawberry from Cloudy with a Chance of Meatballs 2">
+    <p class="small-label">secret word accepted</p><h2 id="manda-title">Manda 🍓</h2><p>You found the sweetest thing hiding in here.</p>
+  </dialog>
+  <div class="easter-toast" id="easter-toast" role="status" aria-live="polite"></div>
 </body>
 </html>
