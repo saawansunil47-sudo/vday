@@ -1387,3 +1387,21 @@ button,summary,input{font:inherit}
 @media(max-width:850px){.memory-map-shell{grid-template-columns:1fr}.memory-map-board{min-height:520px}.map-memory-card{display:grid;grid-template-columns:125px 1fr;column-gap:1rem;align-items:start}.map-photo-frame{grid-row:1/5;margin:0;aspect-ratio:4/5}.map-memory-card .small-label,.map-memory-card h3,.map-memory-card>p,.map-memory-card .ink-button{grid-column:2}.map-memory-card .ink-button{align-self:end}}
 @media(max-width:560px){.memory-map-board{min-height:470px}.memory-pin>span:last-child{font-size:.68rem;padding:.2rem .38rem}.pin-marker{width:22px;height:22px;border-width:4px}.pin-vintage{left:15%;top:21%}.pin-f16{left:39%;top:13%}.pin-nimhans{left:58%;top:29%}.pin-lake{left:82%;top:15%}.pin-pbh{left:84%;top:49%}.pin-shettys{left:67%;top:72%}.pin-hoc{left:39%;top:59%}.pin-invincia{left:16%;top:79%}.map-memory-card{grid-template-columns:95px 1fr;padding:.9rem}.map-memory-card h3{font-size:1.55rem}.map-memory-card>p:not(.small-label){font-size:.92rem;line-height:1.5}}
 @media(prefers-reduced-motion:reduce){.pin-marker{transition:none}}
+
+
+/* ===== Botanical bouquet + real vinyl (v9) ===== */
+.play-grid{grid-template-columns:1fr}.record-roulette-card{width:min(100%,680px);margin-inline:auto}
+.roulette-record{overflow:hidden;background:#050505;box-shadow:0 24px 48px rgba(0,0,0,.42),0 0 0 1px rgba(226,185,118,.14)}
+.roulette-record img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;filter:contrast(1.06) saturate(.9);pointer-events:none}
+.roulette-record:hover img,.roulette-record:focus-visible img{filter:contrast(1.08) saturate(1) brightness(1.08)}
+.flower-picker{gap:.65rem}
+.flower-picker button{min-width:118px;padding:.45rem .45rem .7rem;display:grid;justify-items:center;gap:.15rem;font-size:1rem;overflow:hidden}
+.flower-picker button .flower-name{font-family:"Caveat",cursive;color:var(--cream);font-size:1rem;line-height:1.05}
+.flower-art,.bouquet-flower{display:block;background-image:url("assets/flowers-2d.webp");background-repeat:no-repeat;background-size:400% 200%;-webkit-mask-image:radial-gradient(ellipse at center,#000 54%,rgba(0,0,0,.92) 64%,transparent 78%);mask-image:radial-gradient(ellipse at center,#000 54%,rgba(0,0,0,.92) 64%,transparent 78%)}
+.flower-art{width:106px;height:138px;border-radius:46%;filter:drop-shadow(0 9px 12px rgba(0,0,0,.28))}
+.flower-art[data-index="0"],.bouquet-flower[data-index="0"]{background-position:0 0}.flower-art[data-index="1"],.bouquet-flower[data-index="1"]{background-position:33.333% 0}.flower-art[data-index="2"],.bouquet-flower[data-index="2"]{background-position:66.667% 0}.flower-art[data-index="3"],.bouquet-flower[data-index="3"]{background-position:100% 0}.flower-art[data-index="4"],.bouquet-flower[data-index="4"]{background-position:0 100%}.flower-art[data-index="5"],.bouquet-flower[data-index="5"]{background-position:33.333% 100%}.flower-art[data-index="6"],.bouquet-flower[data-index="6"]{background-position:66.667% 100%}.flower-art[data-index="7"],.bouquet-flower[data-index="7"]{background-position:100% 100%}
+.bouquet-stage{min-height:340px;padding:1.1rem .5rem 1.4rem;align-content:flex-end;overflow:hidden;background:radial-gradient(ellipse at 50% 105%,rgba(89,136,84,.28),transparent 58%),linear-gradient(180deg,rgba(13,19,32,.46),rgba(5,9,18,.72))}
+.bouquet-flower{width:clamp(118px,18vw,158px);height:clamp(165px,25vw,218px);margin:0 clamp(-30px,-3.4vw,-16px);transform-origin:50% 95%;filter:drop-shadow(0 12px 10px rgba(0,0,0,.25));animation:flower-arrive .48s cubic-bezier(.2,.8,.3,1) both}
+.bouquet-flower:nth-child(4n){transform:rotate(9deg) translateY(8px)}.bouquet-flower:nth-child(4n+1){transform:rotate(-10deg) translateY(12px)}.bouquet-flower:nth-child(4n+2){transform:rotate(4deg) translateY(-4px)}.bouquet-flower:nth-child(4n+3){transform:rotate(-3deg) translateY(3px)}
+@media(max-width:620px){.flower-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.flower-picker button{width:100%;min-width:0}.flower-art{width:min(126px,38vw);height:min(164px,49vw)}.bouquet-stage{min-height:300px}.bouquet-flower{width:112px;height:158px;margin:0 -24px}.record-roulette-card{padding-inline:1rem}}
+@media(prefers-reduced-motion:reduce){.roulette-record.spinning{animation:none}}
