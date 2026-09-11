@@ -1405,3 +1405,15 @@ button,summary,input{font:inherit}
 .bouquet-flower:nth-child(4n){transform:rotate(9deg) translateY(8px)}.bouquet-flower:nth-child(4n+1){transform:rotate(-10deg) translateY(12px)}.bouquet-flower:nth-child(4n+2){transform:rotate(4deg) translateY(-4px)}.bouquet-flower:nth-child(4n+3){transform:rotate(-3deg) translateY(3px)}
 @media(max-width:620px){.flower-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.flower-picker button{width:100%;min-width:0}.flower-art{width:min(126px,38vw);height:min(164px,49vw)}.bouquet-stage{min-height:300px}.bouquet-flower{width:112px;height:158px;margin:0 -24px}.record-roulette-card{padding-inline:1rem}}
 @media(prefers-reduced-motion:reduce){.roulette-record.spinning{animation:none}}
+
+
+/* ===== Tighter wrapped bouquet (v10) ===== */
+.bouquet-stage{position:relative;min-height:350px;flex-wrap:nowrap;align-items:flex-end;padding:1rem .25rem 1.35rem}
+.bouquet-stage.has-flowers{overflow:hidden}
+.bouquet-flower{position:relative;z-index:2;flex:0 0 auto;width:clamp(110px,13vw,132px);height:clamp(190px,22vw,225px);margin-inline:-31px}
+.bouquet-flower:nth-child(4n){transform:rotate(11deg) translateY(4px)}.bouquet-flower:nth-child(4n+1){transform:rotate(-12deg) translateY(9px)}.bouquet-flower:nth-child(4n+2){transform:rotate(5deg) translateY(-7px)}.bouquet-flower:nth-child(4n+3){transform:rotate(-4deg) translateY(1px)}
+.bouquet-wrap{position:absolute;z-index:4;left:50%;bottom:7px;width:min(72%,360px);height:158px;transform:translateX(-50%);filter:drop-shadow(0 16px 15px rgba(0,0,0,.32));pointer-events:none}
+.bouquet-wrap::before{content:"";position:absolute;inset:0;clip-path:polygon(7% 2%,50% 28%,93% 2%,72% 100%,28% 100%);background:linear-gradient(118deg,transparent 0 8%,rgba(255,255,255,.44) 8.5% 9%,transparent 9.5% 100%),linear-gradient(145deg,#fff6e9 0 36%,#e8d2c3 37% 66%,#cda59c 67% 100%);border-radius:0 0 18px 18px}
+.bouquet-wrap::after{content:"";position:absolute;left:22%;right:22%;bottom:29px;height:34px;border-radius:4px;background:linear-gradient(180deg,#b64a68,#8e2948);box-shadow:0 4px 9px rgba(74,16,37,.28)}
+.bouquet-knot{position:absolute;z-index:2;left:50%;bottom:19px;width:42px;height:42px;transform:translateX(-50%);border-radius:50%;background:#a93b5c;box-shadow:-32px 2px 0 -5px #9a3151,32px 2px 0 -5px #9a3151,0 5px 12px rgba(60,10,30,.35)}
+@media(max-width:620px){.bouquet-stage{min-height:320px;padding-inline:0}.bouquet-flower{width:96px;height:180px;margin-inline:-28px}.bouquet-wrap{width:min(82%,300px);height:140px}}
