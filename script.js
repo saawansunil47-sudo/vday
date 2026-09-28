@@ -133,24 +133,65 @@ customPlayer.hidden = false;
 audio.controls = false;
 audio.hidden = true;
 
-// Animate only when a card enters view; content is never hidden waiting for JS.
+// Scroll entrances add motion on top of the scrapbook's existing transforms.
+// Content stays visible when JavaScript, observers, or animation support is absent.
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if ("IntersectionObserver" in window && typeof Element.prototype.animate === "function") {
+  const entranceCards = [...document.querySelectorAll(
+    ".section-heading, .music-card, .polaroid, .sticky-note, .interactive-card, .memory-map-shell, .letter-envelope"
+  )];
+  const entranceSettings = new WeakMap();
+  const activeEntrances = new Set();
+  const narrowScreen = window.matchMedia("(max-width: 620px)");
+  entranceCards.forEach((card, index) => {
+    const photo = card.matches(".polaroid");
+    entranceSettings.set(card, {
+      photo,
+      side: photo ? (Math.random() < .5 ? -1 : 1) : (index % 2 ? 1 : -1),
+      spin: photo ? (18 + Math.random() * 24) * (Math.random() < .5 ? -1 : 1) : 0
+    });
+  });
+
   const entranceObserver = new IntersectionObserver(entries => {
+    let cascade = 0;
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entranceObserver.unobserve(entry.target);
-      if (reducedMotion.matches) return;
-      const animation = entry.target.animate([
-        { opacity: .45, translate: "0 22px" },
-        { opacity: 1, translate: "0 0" }
-      ], { duration: 750, easing: "cubic-bezier(.2,.7,.2,1)" });
-      const stopForFocus = () => animation.finish();
-      entry.target.addEventListener("focusin", stopForFocus, { once: true });
-      animation.finished.then(() => entry.target.removeEventListener("focusin", stopForFocus));
+      const card = entry.target;
+      entranceObserver.unobserve(card);
+      // Never move a control while someone is using it.
+      if (reducedMotion.matches || card.contains(document.activeElement)) return;
+      const { photo, side, spin } = entranceSettings.get(card);
+      const mobile = narrowScreen.matches;
+      const distance = photo ? (mobile ? 60 : 150) : (mobile ? 36 : 90);
+      const rotation = mobile ? spin * .6 : spin;
+      const delay = Math.min(cascade++, 3) * (mobile ? 65 : 100);
+      const animation = card.animate([
+        { opacity: 0, translate: (side * distance) + "px " + (photo ? 32 : 16) + "px", rotate: rotation + "deg" },
+        { opacity: 1, translate: "0px 0px", rotate: "0deg" }
+      ], {
+        duration: photo ? (mobile ? 850 : 1100) : 800,
+        delay,
+        easing: "cubic-bezier(.16,1,.3,1)",
+        fill: "backwards"
+      });
+      // Individual translate/rotate properties leave --tilt and hover transforms intact.
+      activeEntrances.add(animation);
+      const finishEntrance = () => animation.finish();
+      card.addEventListener("focusin", finishEntrance, { once: true });
+      card.addEventListener("pointerdown", finishEntrance, { once: true });
+      const cleanup = () => {
+        activeEntrances.delete(animation);
+        card.removeEventListener("focusin", finishEntrance);
+        card.removeEventListener("pointerdown", finishEntrance);
+      };
+      animation.finished.then(cleanup, cleanup);
     });
-  }, { threshold: .08 });
-  document.querySelectorAll(".polaroid, .sticky-note, .section-heading").forEach(card => entranceObserver.observe(card));
+  }, { threshold: .03, rootMargin: "0px 0px -24px 0px" });
+
+  entranceCards.forEach(card => entranceObserver.observe(card));
+  reducedMotion.addEventListener("change", event => {
+    if (event.matches) activeEntrances.forEach(animation => animation.finish());
+  });
 }
 
 
