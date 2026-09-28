@@ -40,13 +40,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at top,
-      #151d33 0%,
-      #090d19 40%,
-      #05070d 100%
-    );
+  background: #493b49;
 
   color: var(--text-light);
 
@@ -1226,9 +1220,16 @@ body.modal-open { overflow: hidden; }
 }
 body { isolation: isolate; }
 .ambient-light {
-  position: fixed; inset: -15%; z-index: -1; pointer-events: none;
-  background: radial-gradient(ellipse at 75% 20%,#9a516f1c,transparent 45%), radial-gradient(ellipse at 15% 75%,#b8945314,transparent 40%);
-  animation: ambient-breathe 16s ease-in-out infinite alternate;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 4% 8%, rgba(159, 70, 108, .92) 0%, transparent 62%),
+    radial-gradient(ellipse at 98% 25%, rgba(44, 104, 74, .95) 0%, transparent 64%),
+    radial-gradient(ellipse at 25% 100%, rgba(49, 102, 78, .9) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(151, 62, 103, .86) 0%, transparent 63%),
+    #493b49;
 }
 @keyframes ambient-breathe { to { transform: translate3d(-2%,3%,0); opacity: .55; } }
 .stars { z-index: -1; opacity: .045; }
@@ -1381,7 +1382,7 @@ button,summary,input{font:inherit}
 
 
 /* ===== Our little map (v8) ===== */
-.memory-map-section{position:relative}.memory-map-shell{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.65fr);gap:1.25rem;align-items:stretch}.memory-map-board{position:relative;min-height:610px;overflow:hidden;border:1px solid rgba(226,185,118,.22);border-radius:28px;background:radial-gradient(circle at 78% 20%,rgba(226,185,118,.1),transparent 24%),radial-gradient(circle at 18% 72%,rgba(116,77,128,.13),transparent 31%),linear-gradient(145deg,#11192a,#080d1a);box-shadow:inset 0 0 70px rgba(0,0,0,.3);isolation:isolate}.memory-map-board::before{content:"";position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 92%)}.memory-route{position:absolute;inset:7% 4%;width:92%;height:86%;overflow:visible}.memory-route path{fill:none;stroke:rgba(226,185,118,.25);stroke-width:7;stroke-linecap:round}.memory-route .route-dashes{stroke:rgba(226,185,118,.6);stroke-width:2;stroke-dasharray:4 18}
+.memory-map-section{position:relative}.memory-map-shell{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.65fr);gap:1.25rem;align-items:stretch}.memory-map-board{position:relative;min-height:610px;overflow:hidden;border:1px solid rgba(226,185,118,.22);border-radius:28px;background:radial-gradient(circle at 78% 20%,rgba(226,185,118,.1),transparent 24%),radial-gradient(circle at 18% 72%,rgba(116,77,128,.13),transparent 31%),linear-gradient(145deg,#11192a,#080d1a);box-shadow:inset 0 0 70px rgba(0,0,0,.3);isolation:isolate}.memory-map-board::before{content:none}.memory-route{position:absolute;inset:7% 4%;width:92%;height:86%;overflow:visible}.memory-route path{fill:none;stroke:rgba(226,185,118,.25);stroke-width:7;stroke-linecap:round}.memory-route .route-dashes{stroke:rgba(226,185,118,.6);stroke-width:2;stroke-dasharray:4 18}
 .memory-pin{position:absolute;z-index:2;display:grid;justify-items:center;gap:.3rem;border:0;background:transparent;color:var(--cream);cursor:pointer;transform:translate(-50%,-50%);text-shadow:0 2px 8px rgba(0,0,0,.9)}.memory-pin>span:last-child{padding:.25rem .5rem;border-radius:999px;background:rgba(6,9,17,.68);font-size:.78rem;white-space:nowrap}.pin-marker{width:26px;height:26px;border:5px solid #f2d6bc;border-radius:50%;display:grid;place-items:center;color:#9f3153;background:#9f3153;box-shadow:0 0 0 4px rgba(159,49,83,.2),0 8px 18px rgba(0,0,0,.35);font-size:0;transition:.2s ease}.memory-pin:hover .pin-marker,.memory-pin:focus-visible .pin-marker,.memory-pin.active .pin-marker{transform:scale(1.3);background:var(--gold);box-shadow:0 0 0 6px rgba(226,185,118,.19),0 0 25px rgba(226,185,118,.32)}.memory-pin:focus-visible{outline:2px solid var(--gold);outline-offset:8px;border-radius:12px}.pin-vintage{left:12%;top:23%}.pin-f16{left:34%;top:16%}.pin-nimhans{left:55%;top:25%}.pin-lake{left:79%;top:15%}.pin-pbh{left:86%;top:49%}.pin-shettys{left:65%;top:70%}.pin-hoc{left:39%;top:60%}.pin-invincia{left:16%;top:76%}.map-doodle{position:absolute;color:rgba(226,185,118,.35);font-family:"Caveat",cursive;pointer-events:none}.map-doodle-one{right:7%;bottom:8%;font-size:2.4rem;transform:rotate(12deg)}.map-doodle-two{left:6%;top:51%;font-size:1.5rem}.map-doodle-three{left:43%;bottom:5%;font-size:1.25rem;transform:rotate(-4deg)}
 .map-memory-card{border:1px solid rgba(226,185,118,.2);border-radius:28px;padding:1.1rem;background:linear-gradient(155deg,rgba(21,27,44,.96),rgba(8,12,24,.98));box-shadow:0 22px 55px rgba(0,0,0,.24);display:flex;flex-direction:column;align-items:flex-start}.map-photo-frame{width:100%;aspect-ratio:4/5;padding:9px 9px 34px;background:#f1eadf;box-shadow:0 15px 35px rgba(0,0,0,.32);transform:rotate(1deg);margin-bottom:1.25rem}.map-photo-frame img{width:100%;height:100%;display:block;object-fit:cover}.map-memory-card h3{font-family:"Cormorant Garamond",serif;font-size:2rem;margin:.15rem 0 .45rem}.map-memory-card>p:not(.small-label){color:var(--muted);line-height:1.7;flex:1}.map-memory-card .ink-button{margin-top:.8rem;width:100%}
 @media(max-width:850px){.memory-map-shell{grid-template-columns:1fr}.memory-map-board{min-height:520px}.map-memory-card{display:grid;grid-template-columns:125px 1fr;column-gap:1rem;align-items:start}.map-photo-frame{grid-row:1/5;margin:0;aspect-ratio:4/5}.map-memory-card .small-label,.map-memory-card h3,.map-memory-card>p,.map-memory-card .ink-button{grid-column:2}.map-memory-card .ink-button{align-self:end}}
@@ -1446,4 +1447,17 @@ button,summary,input{font:inherit}
   z-index:5;
   clip-path:inset(42% 0 0 0);
   filter:drop-shadow(0 14px 15px rgba(0,0,0,.32));
+}
+
+
+/* Pink and green: continuous colour, without a tiled backdrop. */
+.stars { display: none; }
+.memory-map-board {
+  background: radial-gradient(ellipse at 0% 0%, #65394d, transparent 72%),
+    linear-gradient(145deg, #333c36, #214b39);
+}
+.chapter-number {
+  color: var(--gold);
+  font-size: .875rem;
+  letter-spacing: .12em;
 }
