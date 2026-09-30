@@ -1461,3 +1461,48 @@ button,summary,input{font:inherit}
   font-size: .875rem;
   letter-spacing: .12em;
 }
+
+
+/* Open sections below the gallery; keep functional controls and photo frames. */
+#memories ~ .section :is(
+  .sticky-note, .photo-pile, .interactive-card, .constellation,
+  .bouquet-stage, .memory-map-board, .map-memory-card,
+  .letter-card, .letter-envelope > summary
+) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+#memories ~ .section :is(.sticky-note, .letter-card) {
+  color: var(--cream);
+}
+#memories ~ .section :is(.sticky-note, .letter-card)::before {
+  content: none;
+}
+#memories ~ .section .letter-envelope > summary {
+  color: var(--cream);
+}
+#memories ~ .section :is(.note-number, .letter-card .signature, .envelope-icon) {
+  color: var(--rose-light);
+}
+#memories ~ .section .letter-card p {
+  color: var(--cream);
+}
+#memories ~ .section .interactive-card {
+  --muted: #e0d8d5;
+}
+#memories ~ .section .map-memory-card {
+  --muted: #e0d8d5;
+}
+#memories ~ .section .memory-timeline li::before {
+  background: transparent;
+}
+#memories ~ .section #couple-quiz fieldset,
+#memories ~ .section .open-when-list details {
+  border: 0;
+}
+#memories ~ .section .interactive-card + .interactive-card {
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
