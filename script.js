@@ -249,11 +249,16 @@ const mapStatus = document.getElementById("map-status");
 let mappedPhotoIndex = 7;
 let bengaluruMap;
 const placeMarkers = new Map();
-// Replace null with [latitude, longitude] only after the exact spot is confirmed.
-// Names alone can refer to the wrong branch or venue.
+// Exact destination coordinates from Saawan's shared Google Maps links.
 const memoryCoordinates = {
-  "The vintage visit": null, "F16": null, "NIMHANS": null, "The lake": null,
-  "PBH": null, "Shetty’s": null, "HOC": null, "Invincia": null
+  "The vintage visit": [13.1739162, 77.5391991],
+  "F16": [13.1750186, 77.5431934],
+  "F16 · group memory": [13.1750186, 77.5431934],
+  "The lake": [13.169599, 77.5414174],
+  "PBH": [13.0300504, 77.5705663],
+  "Shetty’s": [13.0991061, 77.5895609],
+  "HOC": [13.0983246, 77.5734734],
+  "Invincia": [13.1717796, 77.5361595]
 };
 function selectMemoryPin(pin) {
   const index = Number(pin.dataset.photo) - 1;
@@ -307,16 +312,32 @@ function initializeMemoryMap() {
     iconSize: [32, 40], iconAnchor: [16, 36], popupAnchor: [0, -36]
   });
   const positions = [];
+  const groups = new Map();
   memoryPins.forEach(pin => {
     const coords = memoryCoordinates[pin.dataset.place];
     if (!Array.isArray(coords) || coords.length !== 2 ||
         !coords.every(Number.isFinite) || Math.abs(coords[0]) > 90 || Math.abs(coords[1]) > 180) return;
+    const key = coords.join(",");
+    if (!groups.has(key)) groups.set(key, { coords, pins: [] });
+    groups.get(key).pins.push(pin);
+  });
+  groups.forEach(({ coords, pins }) => {
+    const popup = document.createElement("div");
     const title = document.createElement("strong");
-    title.textContent = pin.dataset.place;
-    const marker = L.marker(coords, { icon: redPin, title: pin.dataset.place, alt: pin.dataset.place })
-      .addTo(bengaluruMap).bindPopup(title);
-    marker.on("click", () => selectMemoryPin(pin));
-    placeMarkers.set(pin.dataset.place, marker);
+    title.textContent = pins[0].dataset.place;
+    popup.appendChild(title);
+    pins.forEach(pin => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = pins.length > 1 ? pin.dataset.place : "View this memory ♡";
+      button.style.cssText = "display:block;margin-top:10px;padding:8px 12px;border:1px solid #a03c56;border-radius:6px;background:#fff6f8;color:#64263a;cursor:pointer";
+      button.addEventListener("click", () => selectMemoryPin(pin));
+      popup.appendChild(button);
+    });
+    const marker = L.marker(coords, { icon: redPin, title: title.textContent, alt: title.textContent })
+      .addTo(bengaluruMap).bindPopup(popup);
+    marker.on("click", () => selectMemoryPin(pins[0]));
+    pins.forEach(pin => placeMarkers.set(pin.dataset.place, marker));
     positions.push(coords);
   });
   if (positions.length) bengaluruMap.fitBounds(positions, { padding: [35, 35], maxZoom: 15 });
