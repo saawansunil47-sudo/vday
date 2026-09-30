@@ -1506,3 +1506,17 @@ button,summary,input{font:inherit}
 #memories ~ .section .interactive-card + .interactive-card {
   margin-top: clamp(2rem, 5vw, 4rem);
 }
+
+/* Real Bengaluru map; the surrounding section remains borderless. */
+.map-column { min-width: 0; }
+#bengaluru-map { height: 540px; width: 100%; position: relative; z-index: 0; background: #e7e5dc; color: #242424; }
+.map-status { margin: .7rem 0; color: var(--cream); font-size: .9rem; }
+.map-column > a { font-size: .875rem; }
+.memory-place-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+.memory-place[aria-pressed="true"] { background: #e7a9b330; border-color: var(--rose-light); }
+.memory-red-pin { background: transparent; border: 0; }
+.memory-red-pin span { display: block; width: 28px; height: 28px; background: #d52b40; border: 3px solid white; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 3px 8px #0005; }
+#bengaluru-map .leaflet-popup-content { color: #242424; }
+#bengaluru-map .leaflet-control-attribution { color: #333; background: #fffffff0; }
+#bengaluru-map .leaflet-control-attribution a { color: #075581; }
+@media(max-width:620px) { #bengaluru-map { height: 400px; } }

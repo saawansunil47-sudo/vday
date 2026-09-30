@@ -240,8 +240,97 @@ document.getElementById("doodle-undo").addEventListener("click",()=>{const previ
 document.getElementById("doodle-save").addEventListener("click",()=>{const output=document.createElement("canvas");output.width=doodleCanvas.width;output.height=doodleCanvas.height;const ctx=output.getContext("2d");ctx.fillStyle="#f4eadb";ctx.fillRect(0,0,output.width,output.height);ctx.drawImage(doodleCanvas,0,0);const link=document.createElement("a");link.download="our-little-doodle.png";link.href=output.toDataURL("image/png");link.click();document.getElementById("doodle-status").textContent="Drawing saved ♡"});
 
 
-// ===== Our little map (v8) =====
-const memoryPins=[...document.querySelectorAll(".memory-pin")];const mapMemoryPhoto=document.getElementById("map-memory-photo");const mapMemoryTitle=document.getElementById("map-memory-title");const mapMemoryStory=document.getElementById("map-memory-story");let mappedPhotoIndex=7;
-function selectMemoryPin(pin){mappedPhotoIndex=Number(pin.dataset.photo)-1;const card=photos[mappedPhotoIndex];if(!card)return;memoryPins.forEach(item=>{const selected=item===pin;item.classList.toggle("active",selected);item.setAttribute("aria-pressed",String(selected))});mapMemoryPhoto.src=card.getAttribute("href");mapMemoryPhoto.alt="Memory from "+pin.dataset.place;mapMemoryTitle.textContent=pin.dataset.place;mapMemoryStory.textContent=card.dataset.story}
-memoryPins.forEach(pin=>pin.addEventListener("click",()=>selectMemoryPin(pin)));
-document.getElementById("open-map-memory").addEventListener("click",()=>{showPhoto(mappedPhotoIndex);openDialog(photoDialog)});
+// ===== Real Bengaluru memory map =====
+const memoryPins = [...document.querySelectorAll(".memory-place")];
+const mapMemoryPhoto = document.getElementById("map-memory-photo");
+const mapMemoryTitle = document.getElementById("map-memory-title");
+const mapMemoryStory = document.getElementById("map-memory-story");
+const mapStatus = document.getElementById("map-status");
+let mappedPhotoIndex = 7;
+let bengaluruMap;
+const placeMarkers = new Map();
+// Replace null with [latitude, longitude] only after the exact spot is confirmed.
+// Names alone can refer to the wrong branch or venue.
+const memoryCoordinates = {
+  "The vintage visit": null, "F16": null, "NIMHANS": null, "The lake": null,
+  "PBH": null, "Shetty’s": null, "HOC": null, "Invincia": null
+};
+function selectMemoryPin(pin) {
+  const index = Number(pin.dataset.photo) - 1;
+  const card = photos[index];
+  if (!card) return;
+  mappedPhotoIndex = index;
+  memoryPins.forEach(item => {
+    const selected = item === pin;
+    item.classList.toggle("active", selected);
+    item.setAttribute("aria-pressed", String(selected));
+  });
+  mapMemoryPhoto.src = card.getAttribute("href");
+  mapMemoryPhoto.alt = "Memory from " + pin.dataset.place;
+  mapMemoryTitle.textContent = pin.dataset.place;
+  mapMemoryStory.textContent = card.dataset.story;
+  const marker = placeMarkers.get(pin.dataset.place);
+  if (marker && bengaluruMap) {
+    bengaluruMap.setView(marker.getLatLng(), 15, { animate: !reducedMotion.matches });
+    marker.openPopup();
+  }
+}
+memoryPins.forEach(pin => pin.addEventListener("click", () => selectMemoryPin(pin)));
+document.getElementById("open-map-memory").addEventListener("click", () => {
+  showPhoto(mappedPhotoIndex); openDialog(photoDialog);
+});
+function initializeMemoryMap() {
+  if (bengaluruMap) return;
+  if (!window.L) {
+    mapStatus.textContent = "The map couldn’t load. You can still browse our memories or open the map below.";
+    return;
+  }
+  bengaluruMap = L.map("bengaluru-map", { scrollWheelZoom: false }).setView([12.9716, 77.5946], 12);
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+  let tileFailed = false;
+  tiles.on("loading", () => { tileFailed = false; });
+  tiles.on("tileerror", () => {
+    tileFailed = true;
+    mapStatus.textContent = "Some streets couldn’t load. Try zooming again, or use the map link below.";
+  });
+  tiles.on("load", () => {
+    if (!tileFailed) mapStatus.textContent = placeMarkers.size
+      ? "Tap a red pin to open its memory. Drag to explore; use + and − to zoom."
+      : "Explore Bengaluru. Our memory pins are waiting for their exact spots.";
+  });
+  tiles.addTo(bengaluruMap);
+  const redPin = L.divIcon({
+    className: "memory-red-pin", html: '<span aria-hidden="true"></span>',
+    iconSize: [32, 40], iconAnchor: [16, 36], popupAnchor: [0, -36]
+  });
+  const positions = [];
+  memoryPins.forEach(pin => {
+    const coords = memoryCoordinates[pin.dataset.place];
+    if (!Array.isArray(coords) || coords.length !== 2 ||
+        !coords.every(Number.isFinite) || Math.abs(coords[0]) > 90 || Math.abs(coords[1]) > 180) return;
+    const title = document.createElement("strong");
+    title.textContent = pin.dataset.place;
+    const marker = L.marker(coords, { icon: redPin, title: pin.dataset.place, alt: pin.dataset.place })
+      .addTo(bengaluruMap).bindPopup(title);
+    marker.on("click", () => selectMemoryPin(pin));
+    placeMarkers.set(pin.dataset.place, marker);
+    positions.push(coords);
+  });
+  if (positions.length) bengaluruMap.fitBounds(positions, { padding: [35, 35], maxZoom: 15 });
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => bengaluruMap.invalidateSize({ pan: false })).observe(document.getElementById("bengaluru-map"));
+  }
+}
+if ("IntersectionObserver" in window) {
+  const mapObserver = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      mapObserver.disconnect(); initializeMemoryMap();
+    }
+  }, { rootMargin: "200px" });
+  mapObserver.observe(document.getElementById("bengaluru-map"));
+} else {
+  initializeMemoryMap();
+}
