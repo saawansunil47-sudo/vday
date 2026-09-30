@@ -1465,7 +1465,7 @@ button,summary,input{font:inherit}
 
 /* Open sections below the gallery; keep functional controls and photo frames. */
 #memories ~ .section :is(
-  .sticky-note, .photo-pile, .interactive-card, .constellation,
+  .photo-pile, .interactive-card, .constellation,
   .bouquet-stage, .memory-map-board, .map-memory-card,
   .letter-card, .letter-envelope > summary
 ) {
@@ -1475,16 +1475,16 @@ button,summary,input{font:inherit}
   box-shadow: none;
   backdrop-filter: none;
 }
-#memories ~ .section :is(.sticky-note, .letter-card) {
+#memories ~ .section .letter-card {
   color: var(--cream);
 }
-#memories ~ .section :is(.sticky-note, .letter-card)::before {
+#memories ~ .section .letter-card::before {
   content: none;
 }
 #memories ~ .section .letter-envelope > summary {
   color: var(--cream);
 }
-#memories ~ .section :is(.note-number, .letter-card .signature, .envelope-icon) {
+#memories ~ .section :is(.letter-card .signature, .envelope-icon) {
   color: var(--rose-light);
 }
 #memories ~ .section .letter-card p {
